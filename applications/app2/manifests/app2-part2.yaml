@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2-root
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: test
+    server: 'https://kubernetes.default.svc'
+  project: app2-part2-project
+  source:
+    path: differentPath
+    repoURL: 'https://github.com/DifferentRepo.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
