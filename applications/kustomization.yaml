@@ -1,0 +1,3 @@
+resources:
+- app1/root-application.yaml
+- app2/root-application.yaml

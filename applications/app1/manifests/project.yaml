@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app1-part2-project
+  namespace: argocd
+spec:
+  description: app1-part2
+  # Allow manifests to deploy from a single Git repo
+  sourceRepos:
+  - 'https://github.com/DifferentRepo.git'
+  # only allow a single destination
+  destinations:
+  - namespace: 'test'
+    server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: ''
+  # Allow all namespaced-scoped resources to be created, except for ResourceQuota, LimitRange, NetworkPolicy
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy

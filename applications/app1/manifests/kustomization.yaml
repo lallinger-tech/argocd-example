@@ -1,0 +1,4 @@
+resources:
+- app1-part1.yaml
+- app1-part2.yaml
+- project.yaml
